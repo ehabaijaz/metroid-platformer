@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var direction_x : float
-var speed := 50
+var speed := 150
 @export var jump_strength := 10
 @export var gravity := 10
 signal shoot(pos: Vector2, dir: Vector2)
@@ -24,8 +24,7 @@ func get_input():
 		$Reload.start()
 		var tween = get_tree().create_tween()
 		tween.tween_property($Marker, "scale", Vector2(0.1,0.1), 0.2)
-		tween.tween_property($Marker, "scale", Vector2(0.1,0.1), 0.2)
-	
+		tween.tween_property($Marker, "scale", Vector2(0.5,0.5), 0.4)
 func apply_gravity(delta):	 
 	velocity.y += gravity * delta
 	
