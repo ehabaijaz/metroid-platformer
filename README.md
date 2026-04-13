@@ -10,8 +10,8 @@
 ## About The Game 🔫
 - This game is a BETA version of 'Defeat The Drones': a metroidvania style platformer shooter in which you play as a soldier stranded in an abandoned post-apocalyptic world. Your job: defeat the drones that roam around and survive.
 - This game contains a proper shooting, movement and platforming system.
-- This game has no win condition, instead serving as more of a prototype for the final completed version that will be built based on this model.
 - This game was created in Godot and is for Flavortown, a YSWS by Hack Club.
+- Upon further updates, I've planned to expand this game quite a bit more with more features that will also be present in the bigger game.
   
 ## Controls 🎹
 - AD keys for movement
@@ -19,7 +19,7 @@
 - Mouse to aim, left mouse button to shoot a bullet.
 
 ## About The Final Game ⛳🏁
-- 🪙 Scavenge resources around the map patrolled by enemies and difficult to reach parkour areas.
+- 🪙 Scavenge resources around the map patrolled by enemies and difficult to reach parkour areas. [UPDATE: WILL BE ADDED TO BETA VERSION]
 - 📖 Special Lore about the world will be present in Notes scattered across the world as well as in the intro.
 - 🥷 Powerful bandits who stop at nothing for a chance at survival. 
 - 👽 Special boss fight at the end
