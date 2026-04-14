@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bq4jl7xyd15sa" path="res://scenes/entities/player.gd" id="1_ucweq"]
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="2_08t41"]
+[ext_resource type="Script" uid="uid://coeihdphdbgxi" path="res://scenes/entities/canvas_layer.gd" id="2_dnykm"]
+[ext_resource type="Texture2D" uid="uid://f8ion720haqh" path="res://scenes/entities/coin.png" id="2_ss7kx"]
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_1ie0h"]
+[ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="4_42nxq"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="5_5u6hq"]
+[ext_resource type="AudioStream" uid="uid://dvmcn2scslehc" path="res://audio/oofsound.mp3" id="6_d4qa6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qees"]
 
@@ -20,6 +25,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [9, 10, 11, 12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PExplosionSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_08t41"]
@@ -54,6 +71,21 @@ tracks/0/keys = {
 "values": [17]
 }
 
+[sub_resource type="Animation" id="Animation_d4qa6"]
+resource_name = "pexplode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PExplosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
 [sub_resource type="Animation" id="Animation_42nxq"]
 resource_name = "run"
 length = 1.3333334
@@ -76,8 +108,12 @@ _data = {
 &"RESET": SubResource("Animation_1ie0h"),
 &"idle": SubResource("Animation_08t41"),
 &"jump": SubResource("Animation_5u6hq"),
+&"pexplode": SubResource("Animation_d4qa6"),
 &"run": SubResource("Animation_42nxq")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42nxq"]
+radius = 17.464249
 
 [node name="Player" type="CharacterBody2D" unique_id=35590042 groups=["player"]]
 collision_layer = 2
@@ -86,18 +122,35 @@ script = ExtResource("1_ucweq")
 jump_strength = 340
 gravity = 1000
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1982892522]
+zoom = Vector2(3, 3)
+limit_left = -216
+limit_top = 4
+limit_right = 1442
+limit_bottom = 657
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=963288212]
+script = ExtResource("2_dnykm")
+
+[node name="StaticCoin" type="Sprite2D" parent="Camera2D/CanvasLayer" unique_id=264131525]
+position = Vector2(18, 24)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ss7kx")
+hframes = 12
+
+[node name="PlayerLabel" type="Label" parent="Camera2D/CanvasLayer" unique_id=1658050647]
+offset_left = 34.0
+offset_top = 2.0
+offset_right = 122.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 30
+text = "Coins:"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2106833656]
 shape = SubResource("CapsuleShape2D_0qees")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1982892522]
-zoom = Vector2(3, 3)
-limit_left = -218
-limit_top = 4
-limit_right = 1224
-limit_bottom = 657
-
 [node name="Reload" type="Timer" parent="." unique_id=1432384784]
-wait_time = 1.4
+wait_time = 0.6
 one_shot = true
 
 [node name="Legs" type="Sprite2D" parent="." unique_id=1100043019]
@@ -120,3 +173,24 @@ vframes = 3
 [node name="Marker" type="Sprite2D" parent="." unique_id=1861126694]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_1ie0h")
+
+[node name="PExplosionSprite" type="Sprite2D" parent="." unique_id=355112065]
+visible = false
+texture = ExtResource("4_42nxq")
+hframes = 8
+
+[node name="PlayerExplosion" type="Area2D" parent="." unique_id=728331095]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerExplosion" unique_id=7096521]
+shape = SubResource("CircleShape2D_42nxq")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1036316707]
+texture = ExtResource("5_5u6hq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1034665922]
+stream = ExtResource("6_d4qa6")
+volume_db = 10.0
+
+[connection signal="body_entered" from="PlayerExplosion" to="." method="_on_player_explosion_body_entered"]

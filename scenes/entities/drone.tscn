@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_gs6nb"]
 [ext_resource type="Script" uid="uid://cqu8uq7o3bnde" path="res://scenes/entities/drone.gd" id="1_n87ok"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_xcp44"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="4_0tq5o"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="5_6vf5s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xcp44"]
 
@@ -31,6 +33,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_xcp44"]
@@ -64,6 +78,23 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_in55t"]
+resource_name = "flickerred"
+length = 0.43333334
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+
 [sub_resource type="Animation" id="Animation_0tq5o"]
 resource_name = "idle"
 length = 0.3
@@ -85,6 +116,7 @@ _data = {
 &"RESET": SubResource("Animation_n87ok"),
 &"chase": SubResource("Animation_xcp44"),
 &"explode": SubResource("Animation_6vf5s"),
+&"flickerred": SubResource("Animation_in55t"),
 &"idle": SubResource("Animation_0tq5o")
 }
 
@@ -94,22 +126,24 @@ size = Vector2(241, 191)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tq5o"]
 radius = 12.0415945
 
-[node name="Drone" type="CharacterBody2D" unique_id=627969953]
+[node name="Drone" type="CharacterBody2D" unique_id=627969953 groups=["drones"]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 15
 script = ExtResource("1_n87ok")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1004926519]
-shape = SubResource("CircleShape2D_xcp44")
 
 [node name="DroneSprte" type="Sprite2D" parent="." unique_id=472807925]
 texture = ExtResource("1_gs6nb")
 hframes = 4
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1004926519]
+visible = false
+shape = SubResource("CircleShape2D_xcp44")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1410676845]
 libraries/ = SubResource("AnimationLibrary_6vf5s")
 
 [node name="PlayerEntered" type="Area2D" parent="." unique_id=1579314873]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -122,11 +156,22 @@ texture = ExtResource("3_xcp44")
 hframes = 8
 
 [node name="CollisionArea" type="Area2D" parent="." unique_id=1666537079]
+visible = false
 collision_layer = 0
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" unique_id=258114654]
 shape = SubResource("CircleShape2D_0tq5o")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1771766050]
+position = Vector2(-2, 2)
+color = Color(0.82191235, 0, 0.0025010663, 1)
+texture = ExtResource("4_0tq5o")
+texture_scale = 0.1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1068619464]
+stream = ExtResource("5_6vf5s")
+volume_db = 4.0
 
 [connection signal="body_entered" from="PlayerEntered" to="." method="_on_player_entered_body_entered"]
 [connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://strfs3iwkbpv"]
+
+[ext_resource type="Script" uid="uid://bdgkv0r3ap61e" path="res://gamemaker.gd" id="1_vdlrr"]
+
+[node name="GameMaker" type="Node" unique_id=11379839]
+script = ExtResource("1_vdlrr")

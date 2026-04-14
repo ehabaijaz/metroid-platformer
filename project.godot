@@ -19,6 +19,10 @@ run/main_scene="uid://dptiboknmyklp"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Gamemaker="*uid://bdgkv0r3ap61e"
+
 [display]
 
 window/size/viewport_width=1280
@@ -61,6 +65,7 @@ run={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Drones"
 2d_physics/layer_4="Bullets"
+2d_physics/layer_5="Coin"
 
 [rendering]
 

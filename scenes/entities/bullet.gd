@@ -1,5 +1,5 @@
 extends Area2D
-var speed := 170
+var speed := 200
 var direction :Vector2 
 func _ready() -> void:
 	$Sprite2D.scale = Vector2.ZERO

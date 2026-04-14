@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bntohdpjjudbq"]
+
+[ext_resource type="Script" uid="uid://dfpk0urox8pne" path="res://trueend.gd" id="1_bho3y"]
+[ext_resource type="AudioStream" uid="uid://lgtxx5cjxwv7" path="res://trueend.mp3" id="2_bho3y"]
+
+[node name="TM" type="Control" unique_id=332437498]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bho3y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2019271087]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=184787678]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -191.0
+offset_top = 11.0
+offset_right = 251.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Ending 2/2"
+
+[node name="Label2" type="Label" parent="." unique_id=323105224]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 107.0
+offset_right = 2354.0
+offset_bottom = 626.0
+theme_override_font_sizes/font_size = 29
+text = "I thought I was done for. 
+I would die alone in pain and isolation, never to be seen again. 
+I was terrified yet somehow I survived and I was in pure darkness, contemplating my past. 
+My regrets.
+But then, I saw a light. It blinded me, I couldn't see the faces of the people who rescued me.
+ They carried me out of that damn sewer and took me to their hideout. 
+Civilization is in ruins, cults and gangs scavenge wastelands 
+and mutant creatures make those drones the least of my concerns. 
+These people seem trustworthy, they've given me food and shelter 
+but I don't know if I can survive for long. 
+I have to search for supplies tomorrow. I feel.. grateful."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1621999168]
+stream = ExtResource("2_bho3y")
+volume_db = 0.1
+autoplay = true
