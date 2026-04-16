@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ckdgogjcocebl"]
 
+[ext_resource type="Script" uid="uid://vfhvdu8pw5ta" path="res://nm.gd" id="1_2pqbl"]
 [ext_resource type="AudioStream" uid="uid://hc3uijmivpo0" path="res://normalending.mp3" id="2_goli3"]
 
 [node name="NM" type="Control" unique_id=332437498]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2pqbl")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2019271087]
 layout_mode = 1
@@ -49,6 +51,7 @@ Why did I wake up here in the first place?
 Why didn't I die with the rest of humanity. 
 My punishment is greater. I will rest."
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1621999168]
+[node name="NMAudio" type="AudioStreamPlayer" parent="." unique_id=1621999168]
 stream = ExtResource("2_goli3")
 volume_db = 0.1
+autoplay = true

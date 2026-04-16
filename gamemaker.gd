@@ -12,8 +12,8 @@ func add_coin():
 	emit_signal('coin_collected',coins)
 
 func _process(delta: float) -> void:
-	if coins == max_coins:
-		get_tree().call_deferred("change_scene_to_file", "res://nm.tscn")
+	if coins == max_coins and get_tree().current_scene.scene_file_path == "res://scenes/levels/level.tscn":
+		get_tree().change_scene_to_file("res://nm.tscn")
 
 
 	

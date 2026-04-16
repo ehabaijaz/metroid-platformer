@@ -150,7 +150,7 @@ text = "Coins:"
 shape = SubResource("CapsuleShape2D_0qees")
 
 [node name="Reload" type="Timer" parent="." unique_id=1432384784]
-wait_time = 0.6
+wait_time = 0.5
 one_shot = true
 
 [node name="Legs" type="Sprite2D" parent="." unique_id=1100043019]
