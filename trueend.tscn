@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bntohdpjjudbq"]
 
 [ext_resource type="Script" uid="uid://dfpk0urox8pne" path="res://trueend.gd" id="1_bho3y"]
-[ext_resource type="AudioStream" uid="uid://lgtxx5cjxwv7" path="res://trueend.mp3" id="2_bho3y"]
+[ext_resource type="AudioStream" uid="uid://57hsyxfll7p8" path="res://trueend.mp3" id="2_bho3y"]
 
 [node name="TM" type="Control" unique_id=332437498]
 layout_mode = 3

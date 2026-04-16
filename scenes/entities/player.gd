@@ -33,6 +33,7 @@ func get_input():
 		var tween = get_tree().create_tween()
 		tween.tween_property($Marker, "scale", Vector2(0.1,0.1), 0.2)
 		tween.tween_property($Marker, "scale", Vector2(0.5,0.5), 0.4)
+
 func apply_gravity(delta):
 	velocity.y += gravity * delta
 	

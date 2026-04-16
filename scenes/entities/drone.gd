@@ -4,6 +4,7 @@ var alert = false
 var player 
 var speed = 100
 var health = 3
+var is_exploding = false
 
 func _ready():
 	$AnimationPlayer.current_animation = 'idle'
@@ -33,6 +34,9 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 
 
 func explosion():
+	if is_exploding:
+		return
+	is_exploding = true
 	alert = false
 	speed = 0
 	$DroneSprte.hide()
@@ -44,6 +48,10 @@ func explosion():
 	queue_free()
 	
 func hit():
+	print('hit')
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.05)
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.1)
 	alert = true
 	health -= 1
 	if health <= 0:
