@@ -51,10 +51,10 @@ func animation():
 			$AnimationPlayer.current_animation = 'run' if direction_x else 'idle'
 		else:
 			$AnimationPlayer.current_animation = 'jump'
-			$Legs.flip_h = direction_x < 0
-			var raw_dir = get_local_mouse_position().normalized()
-			var adjusted_dir = Vector2i(round(raw_dir.x), round(raw_dir.y))
-			$Torso.frame = gun_directions[adjusted_dir]	
+		$Legs.flip_h = direction_x < 0
+		var raw_dir = get_local_mouse_position().normalized()
+		var adjusted_dir = Vector2i(round(raw_dir.x), round(raw_dir.y))
+		$Torso.frame = gun_directions[adjusted_dir]	
 
 func update_marker():
 	$Marker.position = get_local_mouse_position().normalized() * 40

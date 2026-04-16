@@ -10,6 +10,7 @@ func _ready():
 	$AnimationPlayer.current_animation = 'idle'
 	player = get_node('/root/Level/Entities/Player')
 	alert = false 
+	$OnDamageLight.enabled = false
 
 
 func _on_player_entered_body_entered(body: Node2D) -> void: 
@@ -39,19 +40,27 @@ func explosion():
 	is_exploding = true
 	alert = false
 	speed = 0
+	$CollisionShape2D.set_deferred("disabled", true)
+	$PlayerEntered/CollisionShape2D.set_deferred("disabled", true)
+	$CollisionArea/CollisionShape2D.set_deferred("disabled", true)
 	$DroneSprte.hide()
 	$ExplosionSprite.show()
+	$AnimationPlayer.stop()
 	$AnimationPlayer.play('explode')
-	$AudioStreamPlayer.play()
+	$AudioStreamPlayer.play()  
+	print("waiting for animation...")
 	await $AnimationPlayer.animation_finished
+	print("animation done, freeing drone...")
 	var explosion_pos = global_position  
 	queue_free()
 	
 func hit():
-	print('hit')
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.WHITE, 0.05)
-	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.1)
+	$OnDamageLight.enabled = true
+	await get_tree().create_timer(0.1).timeout
+	$DroneSprte.modulate = Color(1, 0, 0, 1)
+	await get_tree().create_timer(0.1).timeout
+	$DroneSprte.modulate = Color(1, 1, 1, 1)
+	$OnDamageLight.enabled = false
 	alert = true
 	health -= 1
 	if health <= 0:
