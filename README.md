@@ -30,6 +30,7 @@
 - ❓ More?
 
 ElevenLabs AI was used for the Ending Monologues.
+AI was not used for the README
 <!-- LICENSE -->
 ## License
 
