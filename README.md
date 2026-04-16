@@ -8,8 +8,11 @@
 [![MIT License][license-shield]][license-url]
 
 ## About The Game 🔫
-- This game is a BETA version of 'Defeat The Drones': a metroidvania style platformer shooter in which you play as a soldier stranded in an abandoned post-apocalyptic world. Your job: defeat the drones that roam around and survive.
+- This game is a BETA version of 'Defeat The Drones': a metroidvania style platformer shooter in which you play as a soldier stranded in an abandoned post-apocalyptic world. Your job: defeat the drones that roam around and survive. 
 - This game contains a proper shooting, movement and platforming system.
+- Normal Mode: Jumping and shooting, normal metroidvania fun. Completing it gives you the 'Normal Ending'.
+- Hard Mode: Turns the game into a horror game with much more difficulty. Surrounded by pure darkness, you just have a lamp. Drones are multiplied and more stealthy. Completing it gives you the 'True Ending'.
+- If you can't complete either mode or just want to see each ending again, you can access both endings from the main menu though it is recommended to acquire them through gameplay.
 - This game was created in Godot and is for Flavortown, a YSWS by Hack Club.
 - Upon further updates, I've planned to expand this game quite a bit more with more features that will also be present in the bigger game.
   
@@ -17,15 +20,16 @@
 - AD keys for movement
 - Spacebar to jump
 - Mouse to aim, left mouse button to shoot a bullet.
+- ESC key to go back to the main menu at any time
 
 ## About The Final Game ⛳🏁
-- 🪙 Scavenge resources around the map patrolled by enemies and difficult to reach parkour areas. [UPDATE: WILL BE ADDED TO BETA VERSION]
+- 🪙 Scavenge resources around the map patrolled by enemies and difficult to reach parkour areas. (UPDATE: ADDED though the main game will expand on this)
 - 📖 Special Lore about the world will be present in Notes scattered across the world as well as in the intro.
 - 🥷 Powerful bandits who stop at nothing for a chance at survival. 
 - 👽 Special boss fight at the end
 - ❓ More?
 
-  No Ai was used for this project, including for the README.
+ElevenLabs AI was used for the Ending Monologues.
 <!-- LICENSE -->
 ## License
 
