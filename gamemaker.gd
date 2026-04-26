@@ -1,7 +1,7 @@
 extends Node
 
 var coins = 0 
-var max_coins = 20
+var max_coins = 10
 var scene_changing = false
 signal coin_collected(new_total)
 
@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 	if coins == max_coins and get_tree().current_scene.scene_file_path == "res://scenes/levels/hard_level.tscn":
 		scene_changing = true
 		get_tree().call_deferred("change_scene_to_file", "res://trueend.tscn")
+	
 
 
 

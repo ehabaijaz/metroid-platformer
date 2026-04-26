@@ -174,6 +174,7 @@ stream = ExtResource("5_6vf5s")
 volume_db = 4.0
 
 [node name="OnDamageLight" type="PointLight2D" parent="." unique_id=1092615786]
+scale = Vector2(0.1, 0.1)
 energy = 0.2
 texture = ExtResource("4_0tq5o")
 

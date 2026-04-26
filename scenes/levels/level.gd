@@ -2,6 +2,9 @@ extends Node2D
 var bullet_scene = preload("res://scenes/entities/bullet.tscn")
 
 func _ready() -> void:
+	var current_scene_name = get_tree().current_scene.name
+	print(current_scene_name)
+	Gamemaker.coins = 0 
 	$AudioStreamPlayer.play()
 	for light in $LightGroup.get_children():
 		if light is Light2D:

@@ -2850,7 +2850,7 @@ gradient = SubResource("Gradient_7pb6i")
 fill_from = Vector2(0.38020834, 0.5260417)
 fill_to = Vector2(0.7864583, 0.15104167)
 
-[node name="Level" type="Node2D" unique_id=2072332290]
+[node name="HardLevel" type="Node2D" unique_id=2072332290]
 script = ExtResource("1_fufwk")
 
 [node name="Layers" type="Node2D" parent="." unique_id=2012856819]
@@ -2889,54 +2889,122 @@ blend_mode = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="LightGroup" unique_id=763260609]
 position = Vector2(1149, 93)
+energy = 3.0
 texture = SubResource("GradientTexture2D_xfk5q")
 
 [node name="PointLight2D2" type="PointLight2D" parent="LightGroup" unique_id=1831976341]
 position = Vector2(276, 508)
+energy = 3.0
 texture = SubResource("GradientTexture2D_xfk5q")
 
 [node name="PointLight2D3" type="PointLight2D" parent="LightGroup" unique_id=267383672]
 position = Vector2(223, 280)
+energy = 3.0
 texture = ExtResource("6_ullo8")
 
 [node name="PointLight2D4" type="PointLight2D" parent="LightGroup" unique_id=1846228160]
 position = Vector2(383, 73)
+energy = 3.0
 texture = ExtResource("6_ullo8")
 
 [node name="PointLight2D13" type="PointLight2D" parent="LightGroup" unique_id=1479508418]
 position = Vector2(157, 55)
+energy = 3.0
 texture = ExtResource("6_ullo8")
 
 [node name="PointLight2D5" type="PointLight2D" parent="LightGroup" unique_id=2102334379]
 position = Vector2(632, 91)
+energy = 3.0
 texture = ExtResource("7_tgiam")
 
 [node name="PointLight2D6" type="PointLight2D" parent="LightGroup" unique_id=1816863621]
 position = Vector2(472, 88)
+energy = 3.0
 texture = ExtResource("7_tgiam")
 
 [node name="PointLight2D7" type="PointLight2D" parent="LightGroup" unique_id=718916274]
 position = Vector2(754, 279)
+energy = 3.0
 texture = ExtResource("6_ullo8")
 
 [node name="PointLight2D10" type="PointLight2D" parent="LightGroup" unique_id=789718140]
 position = Vector2(572, 489)
+energy = 3.0
 texture = ExtResource("6_ullo8")
 
 [node name="PointLight2D11" type="PointLight2D" parent="LightGroup" unique_id=1555789454]
 position = Vector2(926, 473)
+energy = 3.0
 texture = ExtResource("6_ullo8")
 
 [node name="PointLight2D12" type="PointLight2D" parent="LightGroup" unique_id=952001720]
 position = Vector2(1105, 472)
+energy = 3.0
 texture = ExtResource("6_ullo8")
 
 [node name="PointLight2D8" type="PointLight2D" parent="LightGroup" unique_id=1286840630]
 position = Vector2(921, 288)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D14" type="PointLight2D" parent="LightGroup" unique_id=747369433]
+position = Vector2(441, 163)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D15" type="PointLight2D" parent="LightGroup" unique_id=878368258]
+position = Vector2(518, 559)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D19" type="PointLight2D" parent="LightGroup" unique_id=592994221]
+position = Vector2(62, 359)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D21" type="PointLight2D" parent="LightGroup" unique_id=999772726]
+position = Vector2(339, 363)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D22" type="PointLight2D" parent="LightGroup" unique_id=1638013986]
+position = Vector2(934, 154)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D23" type="PointLight2D" parent="LightGroup" unique_id=308053997]
+position = Vector2(781, 358)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D24" type="PointLight2D" parent="LightGroup" unique_id=1280326830]
+position = Vector2(409, 323)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D20" type="PointLight2D" parent="LightGroup" unique_id=1137451236]
+position = Vector2(410, 530)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D16" type="PointLight2D" parent="LightGroup" unique_id=1784964712]
+position = Vector2(90, 273)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D17" type="PointLight2D" parent="LightGroup" unique_id=897571754]
+position = Vector2(767, 118)
+energy = 3.0
+texture = ExtResource("8_y25lw")
+
+[node name="PointLight2D18" type="PointLight2D" parent="LightGroup" unique_id=1157090684]
+position = Vector2(767, 118)
+energy = 3.0
 texture = ExtResource("8_y25lw")
 
 [node name="PointLight2D9" type="PointLight2D" parent="LightGroup" unique_id=847564966]
 position = Vector2(488, 287)
+energy = 3.0
 texture = ExtResource("8_y25lw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1907270055]
@@ -2978,41 +3046,11 @@ position = Vector2(953, 57)
 [node name="Coin10" parent="Coins20" unique_id=1720448419 instance=ExtResource("11_j336g")]
 position = Vector2(456, 221)
 
-[node name="Coin11" parent="Coins20" unique_id=2110776687 instance=ExtResource("11_j336g")]
-position = Vector2(-151, 219)
-
-[node name="Coin12" parent="Coins20" unique_id=2128139030 instance=ExtResource("11_j336g")]
-position = Vector2(-233, 137)
-
-[node name="Coin13" parent="Coins20" unique_id=1484250721 instance=ExtResource("11_j336g")]
-position = Vector2(-194, 24)
-
-[node name="Coin14" parent="Coins20" unique_id=1296984136 instance=ExtResource("11_j336g")]
-position = Vector2(-282, -37)
-
-[node name="Coin15" parent="Coins20" unique_id=1414985958 instance=ExtResource("11_j336g")]
-position = Vector2(-286, -134)
-
-[node name="Coin16" parent="Coins20" unique_id=728172395 instance=ExtResource("11_j336g")]
-position = Vector2(-108, -245)
-
-[node name="Coin17" parent="Coins20" unique_id=2068698562 instance=ExtResource("11_j336g")]
-position = Vector2(485, -134)
-
-[node name="Coin18" parent="Coins20" unique_id=1835876287 instance=ExtResource("11_j336g")]
-position = Vector2(698, -234)
-
-[node name="Coin19" parent="Coins20" unique_id=407296248 instance=ExtResource("11_j336g")]
-position = Vector2(231, 106)
-
-[node name="Coin20" parent="Coins20" unique_id=881881789 instance=ExtResource("11_j336g")]
-position = Vector2(-340, 265)
-
 [node name="Drone" parent="." unique_id=376533537 instance=ExtResource("5_xyut4")]
 position = Vector2(76, 432)
 
 [node name="Drone2" parent="." unique_id=665487716 instance=ExtResource("5_xyut4")]
-position = Vector2(125, 436)
+position = Vector2(397, 569)
 
 [node name="Drone3" parent="." unique_id=2077177010 instance=ExtResource("5_xyut4")]
 position = Vector2(827, 160)
@@ -3024,69 +3062,18 @@ position = Vector2(865, 159)
 position = Vector2(497, 330)
 
 [node name="Drone6" parent="." unique_id=1573783534 instance=ExtResource("5_xyut4")]
-position = Vector2(424, 356)
+position = Vector2(611, 291)
 
 [node name="Drone7" parent="." unique_id=519817176 instance=ExtResource("5_xyut4")]
-position = Vector2(344, 435)
+position = Vector2(102, 566)
 
 [node name="Drone8" parent="." unique_id=401101982 instance=ExtResource("5_xyut4")]
-position = Vector2(480, 432)
+position = Vector2(558, 144)
 
 [node name="Drone9" parent="." unique_id=30374596 instance=ExtResource("5_xyut4")]
 position = Vector2(639, 519)
 
 [node name="Drone10" parent="." unique_id=1566561125 instance=ExtResource("5_xyut4")]
 position = Vector2(674, 441)
-
-[node name="Drone11" parent="." unique_id=684729364 instance=ExtResource("5_xyut4")]
-position = Vector2(732, 432)
-
-[node name="Drone12" parent="." unique_id=1327137798 instance=ExtResource("5_xyut4")]
-position = Vector2(867, 435)
-
-[node name="Drone13" parent="." unique_id=1542844979 instance=ExtResource("5_xyut4")]
-position = Vector2(940, 435)
-
-[node name="Drone14" parent="." unique_id=2046641740 instance=ExtResource("5_xyut4")]
-position = Vector2(1060, 439)
-
-[node name="Drone15" parent="." unique_id=761844508 instance=ExtResource("5_xyut4")]
-position = Vector2(1131, 355)
-
-[node name="Drone16" parent="." unique_id=1267935513 instance=ExtResource("5_xyut4")]
-position = Vector2(300, 437)
-
-[node name="Drone17" parent="." unique_id=640671912 instance=ExtResource("5_xyut4")]
-position = Vector2(36, 519)
-
-[node name="Drone18" parent="." unique_id=1231342202 instance=ExtResource("5_xyut4")]
-position = Vector2(-29, 516)
-
-[node name="Drone19" parent="." unique_id=347154970 instance=ExtResource("5_xyut4")]
-position = Vector2(-161, 559)
-
-[node name="Drone20" parent="." unique_id=1326278621 instance=ExtResource("5_xyut4")]
-position = Vector2(-112, 437)
-
-[node name="Drone21" parent="." unique_id=1788855527 instance=ExtResource("5_xyut4")]
-position = Vector2(-14, 319)
-
-[node name="Drone22" parent="." unique_id=219836889 instance=ExtResource("5_xyut4")]
-position = Vector2(-61, 326)
-
-[node name="Drone23" parent="." unique_id=935942249 instance=ExtResource("5_xyut4")]
-position = Vector2(-172, 231)
-
-[node name="Drone24" parent="." unique_id=1790390278 instance=ExtResource("5_xyut4")]
-position = Vector2(-104, 167)
-
-[node name="Drone25" parent="." unique_id=909230444 instance=ExtResource("5_xyut4")]
-position = Vector2(677, 166)
-
-[node name="Drone26" parent="." unique_id=73873043 instance=ExtResource("5_xyut4")]
-position = Vector2(615, 165)
-
-[node name="Drone27" parent="." unique_id=1349264833 instance=ExtResource("5_xyut4")]
-position = Vector2(1019, 519)
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

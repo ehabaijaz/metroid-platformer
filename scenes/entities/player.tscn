@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://f8ion720haqh" path="res://scenes/entities/coin.png" id="2_ss7kx"]
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="4_42nxq"]
+[ext_resource type="Script" uid="uid://d2dvwv0qpq001" path="res://scenes/entities/health_ui.gd" id="4_b6tgf"]
+[ext_resource type="Texture2D" uid="uid://duuygkqme2oxs" path="res://heart.png" id="4_c5rqy"]
 [ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="5_5u6hq"]
 [ext_resource type="AudioStream" uid="uid://dvmcn2scslehc" path="res://audio/oofsound.mp3" id="6_d4qa6"]
 
@@ -129,16 +131,16 @@ limit_top = 4
 limit_right = 1442
 limit_bottom = 657
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=963288212]
+[node name="CoinUI" type="CanvasLayer" parent="Camera2D" unique_id=963288212]
 script = ExtResource("2_dnykm")
 
-[node name="StaticCoin" type="Sprite2D" parent="Camera2D/CanvasLayer" unique_id=264131525]
+[node name="StaticCoin" type="Sprite2D" parent="Camera2D/CoinUI" unique_id=264131525]
 position = Vector2(18, 24)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_ss7kx")
 hframes = 12
 
-[node name="PlayerLabel" type="Label" parent="Camera2D/CanvasLayer" unique_id=1658050647]
+[node name="PlayerLabel" type="Label" parent="Camera2D/CoinUI" unique_id=1658050647]
 offset_left = 34.0
 offset_top = 2.0
 offset_right = 122.0
@@ -146,11 +148,31 @@ offset_bottom = 44.0
 theme_override_font_sizes/font_size = 30
 text = "Coins:"
 
+[node name="HealthUI" type="CanvasLayer" parent="Camera2D" unique_id=1114375189]
+script = ExtResource("4_b6tgf")
+
+[node name="Health" type="Sprite2D" parent="Camera2D/HealthUI" unique_id=42228427]
+position = Vector2(1102.9999, 28.999998)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_c5rqy")
+
+[node name="HealthLabel" type="Label" parent="Camera2D/HealthUI" unique_id=1966904737]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -153.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Health : "
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2106833656]
 shape = SubResource("CapsuleShape2D_0qees")
 
 [node name="Reload" type="Timer" parent="." unique_id=1432384784]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="Legs" type="Sprite2D" parent="." unique_id=1100043019]
@@ -187,10 +209,16 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_42nxq")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1036316707]
+energy = 1.3
 texture = ExtResource("5_5u6hq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1034665922]
 stream = ExtResource("6_d4qa6")
 volume_db = 10.0
 
+[node name="IFrameTimer" type="Timer" parent="." unique_id=1359174327]
+one_shot = true
+
+[connection signal="damage_taken" from="." to="Camera2D/HealthUI" method="_on_player_damage_taken"]
 [connection signal="body_entered" from="PlayerExplosion" to="." method="_on_player_explosion_body_entered"]
+[connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]

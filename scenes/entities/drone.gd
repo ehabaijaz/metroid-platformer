@@ -2,13 +2,20 @@ extends CharacterBody2D
 
 var alert = false
 var player 
-var speed = 100
+var speed = 70
 var health = 3
 var is_exploding = false
 
 func _ready():
+	if get_tree().current_scene.name == "HardLevel":
+		health = 2
+	else:
+		health = 3
 	$AnimationPlayer.current_animation = 'idle'
-	player = get_node('/root/Level/Entities/Player')
+	if has_node("/root/Level/Entities/Player"):
+		player = get_node("/root/Level/Entities/Player")
+	elif has_node("/root/HardLevel/Entities/Player"):
+		player = get_node("/root/HardLevel/Entities/Player")
 	alert = false 
 	$OnDamageLight.enabled = false
 
@@ -30,7 +37,7 @@ func _physics_process(delta: float) -> void:
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	explosion()
 	if body.is_in_group('player'):
-		body.player_explosion()
+		body.damage()
 	
 
 

@@ -1,15 +1,24 @@
 extends CharacterBody2D
 
 var direction_x : float
-var speed := 170
+var speed := 190
 @export var jump_strength := 10
 @export var gravity := 10
 signal shoot(pos: Vector2, dir: Vector2)
+signal damage_taken(damage)
 var is_dead = false
 var jump_count = 0
 var max_jumps = 2
+@onready var i_frame_timer: Timer = $IFrameTimer
+var is_invisible = false
+var health = 3 
+var no_health = 0 
 
-
+func _ready() -> void:
+	if get_tree().current_scene.name == "HardLevel":
+		health = 5
+	else: 
+		no_health = 3
 const gun_directions = {
 	Vector2i(1,0): 0, # right
 	Vector2i(1,1): 1, # right down
@@ -78,4 +87,35 @@ func player_explosion():
 
 func _on_player_explosion_body_entered(body: Node2D) -> void:
 	if body.is_in_group('drones'):
+		damage()
+
+func damage():
+	if is_invisible or is_dead: 
+		return
+	is_invisible = true 
+	health -= 1
+	damage_taken.emit(health)
+	if health <= 0:
 		player_explosion()
+		return
+	start_invisibility(1)
+	
+	await get_tree().create_timer(0.1).timeout
+	$Torso.modulate = Color(1, 0, 0, 1)
+	$Legs.modulate = Color(1, 0, 0, 1)
+	await get_tree().create_timer(0.1).timeout
+	$Torso.modulate = Color(1, 1, 1, 1)
+	$Legs.modulate = Color(1, 1, 1, 1)
+func check_health():
+	if health > 0:
+		return
+	if health == no_health:
+		is_dead = true
+		player_explosion()
+
+func start_invisibility(duration):
+	is_invisible = true
+	i_frame_timer.start(duration)
+
+func _on_i_frame_timer_timeout() -> void:
+	is_invisible = false
