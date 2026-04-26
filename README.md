@@ -12,9 +12,9 @@
 - This game contains a proper shooting, movement and platforming system.
 - Normal Mode: Jumping and shooting, normal metroidvania fun. Completing it gives you the 'Normal Ending'.
 - Hard Mode: Turns the game into a horror game with much more difficulty. Surrounded by pure darkness, you just have a lamp. Drones are multiplied and more stealthy. Completing it gives you the 'True Ending'.
+- Collect notes around the map that reveal lore about the world and show features that will come in the expanded game.
 - If you can't complete either mode or just want to see each ending again, you can access both endings from the main menu though it is recommended to acquire them through gameplay.
 - This game was created in Godot and is for Flavortown, a YSWS by Hack Club.
-- Upon further updates, I've planned to expand this game quite a bit more with more features that will also be present in the bigger game.
   
 ## Controls 🎹
 - AD keys for movement
@@ -24,7 +24,8 @@
 
 ## About The Final Game ⛳🏁
 - 🪙 Scavenge resources around the map patrolled by enemies and difficult to reach parkour areas. (UPDATE: ADDED though the main game will expand on this)
-- 📖 Special Lore about the world will be present in Notes scattered across the world as well as in the intro.
+- 📖 Special Lore about the world will be present in Notes scattered across the world as well as in the intro. (ADDED)
+- 🏚️ A hub where you can talk to inhabitants, get power-ups and learn about the lore.
 - 🥷 Powerful bandits who stop at nothing for a chance at survival. 
 - 👽 Special boss fight at the end
 - ❓ More?
