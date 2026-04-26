@@ -13,6 +13,7 @@ var max_jumps = 2
 var is_invisible = false
 var health = 3 
 var no_health = 0 
+@onready var actionable_finder: Area2D = $ActionableFinder
 
 func _ready() -> void:
 	if get_tree().current_scene.name == "HardLevel":
@@ -30,12 +31,18 @@ const gun_directions = {
 	Vector2i(1,-1): 7,# right up
 }
 func get_input():
-	direction_x = Input.get_axis("left" , "right")
+	if get_tree().get_first_node_in_group("dialogue_balloon"):
+		direction_x = 0
+		return 
+	direction_x = Input.get_axis("left", "right")
+	
 	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 		velocity.y = -jump_strength
 		jump_count += 1
+		
 	if is_on_floor():
 		jump_count = 0
+		
 	if Input.is_action_just_pressed("shoot") and $Reload.time_left == 0:
 		shoot.emit(position, get_local_mouse_position().normalized())
 		$Reload.start()
@@ -43,6 +50,15 @@ func get_input():
 		tween.tween_property($Marker, "scale", Vector2(0.1,0.1), 0.2)
 		tween.tween_property($Marker, "scale", Vector2(0.5,0.5), 0.4)
 
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept"):
+		if get_tree().get_first_node_in_group("dialogue_balloon"):
+			return
+			
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size() > 0:
+			actionables[0].action()
+			get_viewport().set_input_as_handled()
 func apply_gravity(delta):
 	velocity.y += gravity * delta
 	

@@ -6,11 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://cgh7234wked4l" path="res://graphics/tilesets/walls.png" id="3_xb4v1"]
 [ext_resource type="PackedScene" uid="uid://jolhvsfm1d1o" path="res://scenes/entities/drone.tscn" id="4_urvlt"]
 [ext_resource type="Texture2D" uid="uid://6j2he24a4uda" path="res://graphics/lights/l3.png" id="6_ouxo3"]
+[ext_resource type="Resource" uid="uid://cmrsos7w0jfxv" path="res://dialogues/note2.dialogue" id="7_5mi6g"]
 [ext_resource type="Texture2D" uid="uid://cbn5tc4c0ckcp" path="res://graphics/lights/l2.png" id="7_icy5c"]
+[ext_resource type="Resource" uid="uid://b2bvjoqfveu4x" path="res://dialogues/note3.dialogue" id="8_b8j7q"]
 [ext_resource type="Texture2D" uid="uid://bo5lofshl02cv" path="res://graphics/lights/l0.png" id="8_rmjfq"]
 [ext_resource type="AudioStream" uid="uid://3mdcmnvavbdt" path="res://addons/tensemusic.mp3" id="9_icy5c"]
 [ext_resource type="AudioStream" uid="uid://tkjj51je3two" path="res://audio/laser.wav" id="10_rmjfq"]
 [ext_resource type="PackedScene" uid="uid://bfk1iby2nud2o" path="res://coin.tscn" id="11_7pb6i"]
+[ext_resource type="Texture2D" uid="uid://barsq703m8r16" path="res://scenes/levels/papernobg.png" id="12_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://d3kaw1yre0cod" path="res://actionable.tscn" id="13_8iyoh"]
+[ext_resource type="Resource" uid="uid://cmbo0d1sujcek" path="res://dialogues/main.dialogue" id="14_mq31s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b2cq8"]
 texture = ExtResource("3_b2cq8")
@@ -2843,6 +2848,13 @@ texture = ExtResource("3_b2cq8")
 [sub_resource type="TileSet" id="TileSet_ouxo3"]
 sources/0 = SubResource("TileSetAtlasSource_mbbpy")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mi6g"]
+radius = 340.58643
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhnmj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jyre1"]
+
 [sub_resource type="Gradient" id="Gradient_7pb6i"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xfk5q"]
@@ -2871,6 +2883,40 @@ tile_set = SubResource("TileSet_urvlt")
 z_index = 1
 tile_map_data = PackedByteArray("AAAJAAIAAAAOAAAAAAAJAAMAAAAOAAEAAAAKAAIAAAAPAAAAAAAKAAMAAAAPAAEAAAApABwAAAAJAAMAAAAqABwAAAAHAAMAAAD2/xwAAAAGAAQAAAD3/x0AAAAHAAUAAAD4/x4AAAAIAAYAAAD5/x0AAAAJAAUAAAD6/xwAAAAKAAQAAAA=")
 tile_set = SubResource("TileSet_ouxo3")
+
+[node name="Note1" type="Sprite2D" parent="Layers" unique_id=1776427788]
+position = Vector2(39.00006, 55.000015)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("12_xfk5q")
+
+[node name="Actionable" parent="Layers/Note1" unique_id=256129024 instance=ExtResource("13_8iyoh")]
+dialogue_resource = ExtResource("14_mq31s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Note1/Actionable" unique_id=214770729]
+shape = SubResource("CircleShape2D_5mi6g")
+
+[node name="Note2" type="Sprite2D" parent="Layers" unique_id=109291886]
+position = Vector2(190.00006, 67.00001)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("12_xfk5q")
+
+[node name="Actionable" parent="Layers/Note2" unique_id=1737159662 instance=ExtResource("13_8iyoh")]
+position = Vector2(0, -0.0006103515)
+dialogue_resource = ExtResource("7_5mi6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Note2/Actionable" unique_id=184145441]
+shape = SubResource("CircleShape2D_qhnmj")
+
+[node name="Note3" type="Sprite2D" parent="Layers" unique_id=1169614042]
+position = Vector2(-104.999985, 163.00003)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("12_xfk5q")
+
+[node name="Actionable" parent="Layers/Note3" unique_id=1014543838 instance=ExtResource("13_8iyoh")]
+dialogue_resource = ExtResource("8_b8j7q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Layers/Note3/Actionable" unique_id=1115354074]
+shape = SubResource("CircleShape2D_jyre1")
 
 [node name="Entities" type="Node2D" parent="." unique_id=865643287]
 
@@ -2979,43 +3025,45 @@ position = Vector2(953, 57)
 [node name="Coin10" parent="Coins20" unique_id=1720448419 instance=ExtResource("11_7pb6i")]
 position = Vector2(456, 221)
 
-[node name="Drone" parent="." unique_id=1914005697 instance=ExtResource("4_urvlt")]
+[node name="Drones" type="Node2D" parent="." unique_id=2085645021]
+
+[node name="Drone" parent="Drones" unique_id=1914005697 instance=ExtResource("4_urvlt")]
 position = Vector2(215, 360)
 
-[node name="Drone2" parent="." unique_id=403579901 instance=ExtResource("4_urvlt")]
+[node name="Drone2" parent="Drones" unique_id=403579901 instance=ExtResource("4_urvlt")]
 position = Vector2(274, 361)
 
-[node name="Drone3" parent="." unique_id=1428624055 instance=ExtResource("4_urvlt")]
+[node name="Drone3" parent="Drones" unique_id=1428624055 instance=ExtResource("4_urvlt")]
 position = Vector2(479, 351)
 
-[node name="Drone4" parent="." unique_id=686982144 instance=ExtResource("4_urvlt")]
+[node name="Drone4" parent="Drones" unique_id=686982144 instance=ExtResource("4_urvlt")]
 position = Vector2(-29, 518)
 
-[node name="Drone5" parent="." unique_id=1232489678 instance=ExtResource("4_urvlt")]
+[node name="Drone5" parent="Drones" unique_id=1232489678 instance=ExtResource("4_urvlt")]
 position = Vector2(-104, 440)
 
-[node name="Drone6" parent="." unique_id=1402862720 instance=ExtResource("4_urvlt")]
+[node name="Drone6" parent="Drones" unique_id=1402862720 instance=ExtResource("4_urvlt")]
 position = Vector2(731, 440)
 
-[node name="Drone7" parent="." unique_id=1791054233 instance=ExtResource("4_urvlt")]
+[node name="Drone7" parent="Drones" unique_id=1791054233 instance=ExtResource("4_urvlt")]
 position = Vector2(928, 434)
 
-[node name="Drone8" parent="." unique_id=562668942 instance=ExtResource("4_urvlt")]
+[node name="Drone8" parent="Drones" unique_id=562668942 instance=ExtResource("4_urvlt")]
 position = Vector2(924, 356)
 
-[node name="Drone9" parent="." unique_id=1163907105 instance=ExtResource("4_urvlt")]
+[node name="Drone9" parent="Drones" unique_id=1163907105 instance=ExtResource("4_urvlt")]
 position = Vector2(665, 169)
 
-[node name="Drone10" parent="." unique_id=1897743835 instance=ExtResource("4_urvlt")]
+[node name="Drone10" parent="Drones" unique_id=1897743835 instance=ExtResource("4_urvlt")]
 position = Vector2(1060, 435)
 
-[node name="Drone11" parent="." unique_id=659645575 instance=ExtResource("4_urvlt")]
+[node name="Drone11" parent="Drones" unique_id=659645575 instance=ExtResource("4_urvlt")]
 position = Vector2(958, 563)
 
-[node name="Drone12" parent="." unique_id=185104411 instance=ExtResource("4_urvlt")]
+[node name="Drone12" parent="Drones" unique_id=185104411 instance=ExtResource("4_urvlt")]
 position = Vector2(1123, 180)
 
-[node name="Drone13" parent="." unique_id=169702630 instance=ExtResource("4_urvlt")]
+[node name="Drone13" parent="Drones" unique_id=169702630 instance=ExtResource("4_urvlt")]
 position = Vector2(921, 53)
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

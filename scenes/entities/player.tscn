@@ -117,6 +117,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_42nxq"]
 radius = 17.464249
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6tgf"]
+radius = 27.0
+
 [node name="Player" type="CharacterBody2D" unique_id=35590042 groups=["player"]]
 collision_layer = 2
 collision_mask = 5
@@ -218,6 +221,13 @@ volume_db = 10.0
 
 [node name="IFrameTimer" type="Timer" parent="." unique_id=1359174327]
 one_shot = true
+
+[node name="ActionableFinder" type="Area2D" parent="." unique_id=656240205]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder" unique_id=2127806227]
+shape = SubResource("CircleShape2D_b6tgf")
 
 [connection signal="damage_taken" from="." to="Camera2D/HealthUI" method="_on_player_damage_taken"]
 [connection signal="body_entered" from="PlayerExplosion" to="." method="_on_player_explosion_body_entered"]
